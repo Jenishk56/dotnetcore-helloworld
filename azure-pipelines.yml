@@ -46,3 +46,8 @@ steps:
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
+
+- script: dotnet publish --output $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+
