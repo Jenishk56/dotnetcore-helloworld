@@ -25,7 +25,7 @@ The stages been involved in the Azure pipeline :-
   - Execute the server and expose the api at the IP of the VM.
 # Please refer file - Release-Pipeline.json & deployment.yml
 
-# The Deployment will pickup the latest artefact of the Master branch Build.
-# The Deployment will happen on every night 3 AM if there is any change in a particular Day.
+The Deployment will pickup the latest artefact of the Master branch Build.
+The Deployment will happen on every night 3 AM if there is any change in a particular Day.
 
 This was my first attempt with the Dotnet Application. And I thoroughly enjoyed developing this end to end pipeline.
