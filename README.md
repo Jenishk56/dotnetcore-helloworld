@@ -1,5 +1,3 @@
-# dotnetcore-helloworld
-
 # Deployment Process :-
 - Using the Azure DevOps from -> https://azure.microsoft.com/en-gb/services/devops creating the Sample pipeline.
 - Creating a private project in there with name - dotnetcore-helloworld
