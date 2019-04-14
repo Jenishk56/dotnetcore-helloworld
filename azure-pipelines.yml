@@ -50,11 +50,3 @@ steps:
 - script: dotnet publish --output $(Build.ArtifactStagingDirectory)
 
 - task: PublishBuildArtifacts@1
-
-# .NET Core
-# Custom NuGet command.
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish
-    projects: '**/*.csproj'
-    arguments: '--configuration release --output $(build.artifactStagingDirectory)'

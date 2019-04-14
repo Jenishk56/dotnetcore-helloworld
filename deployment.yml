@@ -1,0 +1,7 @@
+steps:
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Dotnet Core API'
+  inputs:
+    ConnectionType: PublishProfile
+    PublishProfilePassword: 'serko_jenish'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/_Jenishk56.dotnetcore-helloworld'
