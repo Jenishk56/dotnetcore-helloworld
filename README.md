@@ -16,14 +16,14 @@ The stages been involved in the Azure pipeline :-
 - Code coverage of the Testcase
 - Publish the code coverage
 - Build and Deploy the artefact at the "drop" location.
-# Please refer file - azure-pipeline.yml
+Please refer file - <b>azure-pipeline.yml</b>
 
 # Deployment :-
 - Pickup the artefact (From drop location)
 - Deploy the artefact in a Azure App environment
   - Download the artefact and put it at -> d:\a\r1\a
   - Execute the server and expose the api at the IP of the VM.
-# Please refer file - Release-Pipeline.json & deployment.yml
+Please refer file - <b>Release-Pipeline.json & deployment.yml</b>
 
 The Deployment will pickup the latest artefact of the Master branch Build.
 The Deployment will happen on every night 3 AM if there is any change in a particular Day.
