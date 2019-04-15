@@ -3,54 +3,50 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+# Trigger on master branch
 trigger:
 - master
 
+# Pool VM image for the build
 pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
   buildConfiguration: 'Release'
 
+# Build
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-# ...
-# do this after other tasks such as building
+# Unit Testing
 - task: DotNetCoreCLI@2
   inputs:
     command: test
     projects: '**/UnitTests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
-# ...
-# do this after your tests have run
+# Publish the test result
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
 
-# ...
-# do this after other tasks such as building
+# Get the test code coverage
 - task: DotNetCoreCLI@2
   inputs:
     command: test
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
-# ...
-# do this after your tests have run
-- task: PublishTestResults@2
-  inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
-
+# Storing the artifact in a staging directory
 - script: dotnet publish --output $(Build.ArtifactStagingDirectory)
 
+# Uploading it for the release
 - task: PublishBuildArtifacts@1
 
+# Deployment to the serko API
 - task: AzureRmWebAppDeployment@3
   inputs:
     azureSubscription: 'Free Trial (6debd2df-3407-45fe-8a17-0d5b94b9cf97)'
