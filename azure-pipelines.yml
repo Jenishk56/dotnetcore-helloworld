@@ -50,3 +50,9 @@ steps:
 - script: dotnet publish --output $(Build.ArtifactStagingDirectory)
 
 - task: PublishBuildArtifacts@1
+
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    azureSubscription: 'Free Trial (6debd2df-3407-45fe-8a17-0d5b94b9cf97)'
+    WebAppName: 'serkoapi'
+    Package: $(System.ArtifactsDirectory)/**/*.zip
